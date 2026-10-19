@@ -43,3 +43,8 @@ Al cerrar la ventana inspeccionamos el DOM en el apartado de <span> dónde apare
 <img width="666" height="140" alt="image" src="https://github.com/user-attachments/assets/eca36d69-dd10-4a3b-b4d5-4c81cf1c2b0c" />
 
 ¿Por qué funciona? Antes de ejecutar la búsqueda el payload es únicamente texto, pero al momento de realizar la ejecución, la aplicación utiliza esa entrada para actualizar el encabezado, en este caso, el contenido se interpreta como HTML, por ello el navegador crea un <iframe> real dentro del <span> y al procesar el atributo src del iframe, se ejecuta el JavaScript y aparece la ventana emergente.
+
+
+
+
+
