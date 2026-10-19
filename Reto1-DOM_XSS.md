@@ -44,6 +44,25 @@ Al cerrar la ventana inspeccionamos el DOM en el apartado de <span> dónde apare
 
 ¿Por qué funciona? Antes de ejecutar la búsqueda el payload es únicamente texto, pero al momento de realizar la ejecución, la aplicación utiliza esa entrada para actualizar el encabezado, en este caso, el contenido se interpreta como HTML, por ello el navegador crea un <iframe> real dentro del <span> y al procesar el atributo src del iframe, se ejecuta el JavaScript y aparece la ventana emergente.
 
+<img width="496" height="103" alt="image" src="https://github.com/user-attachments/assets/58cf9704-2144-4235-b7ad-bbbd9b569634" />
+
+La causa es el uso de bypassSecurityTrustHtml sobre el término de búsqueda, que posteriormente se inserta como HTML en el DOM sin la sanitización habitual.
+
+Corrección de vulnerabilidad
+
+Para mostrar el texto que se ingresa al hacer la búsqueda, debe conservarse cómo texto en lugar de ser interpretado como HTML, de la siguiente manera:
+
+// searchValue debe conservar una cadena de texto.
+
+                  this.searchValue = queryParam;
+
+                  <span id="searchValue">{{ searchValue }}</span>
+
+<img width="991" height="513" alt="image" src="https://github.com/user-attachments/assets/49186892-1be1-4309-9aad-c83963559b21" />
+
+Así en vez de interpretarse como HTML, se muestra cómo texto y el payload no cumple su objetivo.
+
+
 
 
 
