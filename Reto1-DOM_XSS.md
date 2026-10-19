@@ -54,9 +54,9 @@ Para mostrar el texto que se ingresa al hacer la búsqueda, debe conservarse có
 
 // searchValue debe conservar una cadena de texto.
 
-                  this.searchValue = queryParam;
+                  this.searchValue = queryParam; (Dentro del HTML)
 
-                  <span id="searchValue">{{ searchValue }}</span>
+                  <span id="searchValue">{{ searchValue }}</span> (Dentro del DOM)
 
 <img width="991" height="513" alt="image" src="https://github.com/user-attachments/assets/49186892-1be1-4309-9aad-c83963559b21" />
 
