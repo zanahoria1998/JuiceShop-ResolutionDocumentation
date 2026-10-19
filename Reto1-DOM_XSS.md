@@ -48,9 +48,9 @@ Al cerrar la ventana inspeccionamos el DOM en el apartado de <span> dónde apare
 
 La causa es el uso de bypassSecurityTrustHtml sobre el término de búsqueda, que posteriormente se inserta como HTML en el DOM sin la sanitización habitual.
 
-Corrección de vulnerabilidad
+Corrección/Mitigación de vulnerabilidad
 
-Para mostrar el texto que se ingresa al hacer la búsqueda, debe conservarse cómo texto en lugar de ser interpretado como HTML, de la siguiente manera:
+Mostrar la entrada cómo texto: para el buscador, retirar bypassSecurityTrustHtml y mostrar el término mediante interpolación de Angular ({{ searchValue }}) o textContent. Así el navegador no interpreta la entrada como HTML. Si la funcionalidad necesita aceptar HTML, utilizar un sanitizador que permita únicamente etiquetas y atributos seguros.
 
 // searchValue debe conservar una cadena de texto.
 
@@ -60,10 +60,4 @@ Para mostrar el texto que se ingresa al hacer la búsqueda, debe conservarse có
 
 <img width="991" height="513" alt="image" src="https://github.com/user-attachments/assets/49186892-1be1-4309-9aad-c83963559b21" />
 
-Así en vez de interpretarse como HTML, se muestra cómo texto y el payload no cumple su objetivo.
-
-
-
-
-
-
+Otra opción es establecer una política de seguridad de contenido (CSP): configurar una política restrictiva que limite la ejecución de scripts y las fuentes permitidas para marcos mediante directivas como script-src y frame-src. Actúa como defensa adicional; no sustituye la corrección del procesamiento inseguro.
