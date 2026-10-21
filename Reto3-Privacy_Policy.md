@@ -24,4 +24,8 @@ La sección "Privacy-Security" contiene una ruta hija llamada "Privacy-Policy", 
 
 ¿Por qué funciona?
 
-Dentro de Angular se tiene una configuración de rutas para determinar 
+Dentro de Angular se tiene una configuración de rutas para determinar qué componente debe mostrar según la dirección visitada. 
+
+Esto corresponde a navegación dentro de la aplicación, no a una redirección ni a la modificación de su código.
+
+La revisión de los archivos JavaScript desde Sources permite comprender cómo se organiza la navegación de una aplicación. Las propiedades path y children ayudan a identificar rutas principales y secundarias.
